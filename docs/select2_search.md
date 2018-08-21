@@ -14,11 +14,11 @@ To enable select2 ajax search functionality you need to do the following:
 
 ## Filter Usage
 
-To use on filters you need to add `as: :ajax_filter` with same options.
+To use on filters you need to add `as: :search_select_filter` with same options.
 If you want to use url helpers, use a `proc` like on the example
 
 ```ruby
-  filter :category_id, as: :ajax_filter, url: proc { admin_categories_path },
+  filter :category_id, as: :search_select_filter, url: proc { admin_categories_path },
          fields: [:name, :description], display_name: 'name', minimum_input_length: 2,
          order_by: 'description_asc'
 ```
@@ -35,3 +35,4 @@ If you want to use url helpers, use a `proc` like on the example
 * `class`: **(optional)** You can pass extra classes for your field.
 * `width`: **(optional)** You can set the select input width (px or %).
 * `order_by`: **(optional)** Order (sort) results by a specific attribute, suffixed with `_desc` or `_asc`. Eg: `description_desc`. By **default** is used the first field in descending direction.
+* `predicate`: **(optional)** You can change the default [ransack predicate](https://github.com/activerecord-hackery/ransack#search-matchers). It **defaults to** `contains`

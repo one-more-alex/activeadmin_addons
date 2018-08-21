@@ -25,6 +25,7 @@ module Dummy
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.secret_key_base = 'TODO Put something here'
+    config.action_controller.permit_all_parameters = true
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
-

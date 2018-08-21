@@ -6,24 +6,35 @@ ActiveAdmin Addons will extend your ActiveAdmin and enable a set of addons you c
 
 ## What you get:
 
-  - [Range Filter](#range-filter): Filter your results using a numeric range (i.e. age between 18-30).
-  - [Select2](#select2): Cool select boxes for everyone.
-  - [Paperclip Integration](#paperclip-integration): Show thumbnails or icons on your lists.
-  - [AASM Integration](#aasm-integration): Nice looking tags for states.
-  - [Enum Integration](#enum-integration): Nice looking tags for enums.
-  - [Boolean Values](#boolean-values): Beautiful boolean values.
-  - [Number Formatting](#number-formatting): Format you currencies with ease.
-  - [List](#list): Show Arrays or Hashes like a list.
-  - [Color Picker](#color-picker): Select colors from a pretty popup.
-  - [Date Time Picker](#date-time-picker): Pick date and time comfortably.
+#### Rows/Columns
 
+- [Paperclip Attachment](#paperclip-attachment): show file icons on your show/index views.
+- [Paperclip Image](#paperclip-image): show thumbnails on your show/index views.
+- [AASM Integration](#aasm-integration): nice looking tags for states.
+- [Enumerize and Rails Enum Integration](#enumerize-and-rails-enum-integration): nice looking tags for enums.
+- [Boolean Values](#boolean-values): beautiful boolean values.
+- [Toggleable Booleans](#toggleable-boolean-columns): have switches to toggle values directly at the index
+- [Number Formatting](#number-formatting): format you currencies with ease.
+- [List](#list): show Arrays or Hashes like a list.
 
-**Table of Contents**
+#### Inputs
 
-- [Installation](#installation)
-- [Default changes to behaviour](#default-changes-to-behaviour)
-- [Addons](#addons)
+- [Select2 Input](#select2-input): cool select boxes for everyone.
+- [Tag Input](#tag-input): to add tags using select2.
+- [Search Select Input](#search-select-input): easy ajax search with activeadmin.
+- [Selected List Input](#selected-list-input): to handle your many to many associations.
+- [Nested Select Input](#nested-select-input): to build related select inputs.
+- [Color Picker Input](#color-picker-input): select colors from a pretty popup.
+- [Date Time Picker Input](#date-time-picker-input): pick date and time comfortably.
 
+#### Filters
+
+- [Numeric Range Filter](#numeric-range-filter): filter your results using a numeric range (i.e. age between 18-30).
+- [Search Select Filter](#search-select-filter): filter your results using the ajax select input.
+
+#### Themes
+- [No Theme](#no-theme): ActiveAdmin default style.
+- [Material Theme](#material-theme): Material Design style provide by [active_material](https://github.com/vigetlabs/active_material).
 
 ## Installation
 
@@ -45,7 +56,7 @@ After that, run the generator:
 $ rails g activeadmin_addons:install
 ```
 
-check [here](docs/install_generator.md) to see more information about this generator.
+Check [here](docs/install_generator.md) to see more information about this generator.
 
 ## Default changes to behaviour
 
@@ -57,61 +68,9 @@ Installing this gem will enable the following changes by default:
 
 ## Addons
 
-### Range Filter
+### Rows/Columns
 
-To filter based on a range of values you can use `range_select` like this:
-
-```ruby
-filter :number, as: :range_select
-```
-
-<img src="./docs/images/filter-range.png" height="150" />
-
-### Select2
-
-#### Default
-
-With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections and multiple selection.
-
-<img src="./docs/images/select2-default.gif" height="200" />
-
-[Read more!](docs/select2_default.md)
-
-#### Tagging
-
-Using tags input, you can add tags using select2.
-
-<img src="./docs/images/select2-tags.gif" height="200" />
-
-[Read more!](docs/select2_tags.md)
-
-#### Ajax Search
-
-Using `search_select` input, you can easily add ajax search to activeadmin
-
-<img src="./docs/images/select2-search-select.gif" height="180" />
-
-[Read more!](docs/select2_search.md)
-
-#### Nested Select
-
-Using `nested_select` input, you can build related select inputs.
-
-<img src="./docs/images/select2-nested-select-default.gif" height="230" />
-
-[Read more!](docs/select2_nested_select.md)
-
-### Paperclip Integration
-
-#### For Images
-
-Displays a paperclip image into index and show views
-
-<img src="./docs/images/paperclip-image-column.png" height="380" />
-
-[Read more!](docs/paperclip_images.md)
-
-#### For Any Attachment
+#### Paperclip Attachment
 
 Displays a paperclip link with attachment related icon into index and show views.
 
@@ -119,7 +78,15 @@ Displays a paperclip link with attachment related icon into index and show views
 
 [Read more!](docs/paperclip_attachment.md)
 
-### AASM Integration
+#### Paperclip Image
+
+Displays a paperclip image into index and show views
+
+<img src="./docs/images/paperclip-image-column.png" height="380" />
+
+[Read more!](docs/paperclip_images.md)
+
+#### AASM Integration
 
 You can show [aasm](https://github.com/aasm/aasm) values as active admin tags.
 
@@ -127,7 +94,7 @@ You can show [aasm](https://github.com/aasm/aasm) values as active admin tags.
 
 [Read more!](docs/aasm_integration.md)
 
-### Enum Integration
+#### Enumerize and Rails Enum Integration
 
 You can show Rails' built in `enums` or [enumerize](https://github.com/brainspec/enumerize) values as active admin tags.
 
@@ -135,15 +102,23 @@ You can show Rails' built in `enums` or [enumerize](https://github.com/brainspec
 
 [Read more!](docs/enum_integration.md)
 
-### Boolean Values
+#### Boolean Values
 
-Modifies how boolean values are displayed
+Modifies how boolean values are displayed.
 
 <img src="./docs/images/bool-column.png" height="250" />
 
 [Read more!](docs/boolean_values.md)
 
-### Number Formatting
+#### Toggleable Boolean Columns
+
+Have switches to toggle values directly at the index
+
+<img src="./docs/images/toggle-bool-column.gif" height="250" />
+
+[Read more!](docs/toggle_bool.md)
+
+#### Number Formatting
 
 You can show numbers with format supported by [Rails NumberHelper](http://apidock.com/rails/v4.2.1/ActionView/Helpers/NumberHelper)
 
@@ -151,7 +126,7 @@ You can show numbers with format supported by [Rails NumberHelper](http://apidoc
 
 [Read more!](docs/number-formatting.md)
 
-### List
+#### List
 
 You can show `Array` or `Hash` values as html lists.
 
@@ -159,7 +134,49 @@ You can show `Array` or `Hash` values as html lists.
 
 [Read more!](docs/list.md)
 
-### Color Picker
+### Inputs
+
+#### Select2 Input
+
+With [select2](http://ivaynberg.github.io/select2/) the select control looks nicer, it works great with large collections.
+
+<img src="./docs/images/select2-default.gif" height="200" />
+
+[Read more!](docs/select2_default.md)
+
+#### Tag Input
+
+Using tags input, you can add tags using select2.
+
+<img src="./docs/images/select2-tags.gif" height="200" />
+
+[Read more!](docs/select2_tags.md)
+
+#### Selected List Input
+
+This form control allows you to handle your many to many associations.
+
+<img src="./docs/images/select2-selected-list.gif" height="400" />
+
+[Read more!](docs/select2_selected_list.md)
+
+#### Search Select Input
+
+Using `search_select` input, you can easily add ajax search to activeadmin.
+
+<img src="./docs/images/select2-search-select.gif" height="180" />
+
+[Read more!](docs/select2_search.md)
+
+#### Nested Select Input
+
+Using `nested_select` input, you can build related select inputs.
+
+<img src="./docs/images/select2-nested-select-default.gif" height="230" />
+
+[Read more!](docs/select2_nested_select.md)
+
+### Color Picker Input
 
 You can pick colors using [JQuery Palette Color Picker](https://github.com/carloscabo/jquery-palette-color-picker)
 
@@ -171,7 +188,7 @@ f.input :color, as: :color_picker
 
 [Read more!](docs/color-picker.md)
 
-### Date Time Picker
+### Date Time Picker Input
 
 You can pick dates with time using the xdan's [jQuery Plugin Date and Time Picker](https://github.com/xdan/datetimepicker)
 
@@ -183,6 +200,52 @@ f.input :updated_at, as: :date_time_picker
 
 [Read more!](docs/date-time-picker.md)
 
+### Filters
+
+#### Numeric Range Filter
+
+To filter based on a range of values you can use `numeric_range_filter` like this:
+
+```ruby
+filter :number, as: :numeric_range_filter
+```
+
+<img src="./docs/images/filter-range.png" height="150" />
+
+#### Search Select Filter
+
+You can use the ajax select input to filter values on index view like this:
+
+```ruby
+filter :category_id, as: :search_select_filter
+```
+
+<img src="./docs/images/filter-search-select.png" height="160" />
+
+### Themes
+
+#### NO Theme
+Use default active_admin theme.
+
+#### Material Theme
+Show material design theme using [active_material](https://github.com/vigetlabs/active_material). If you want to use it, you should run the generator using the flag `theme` as follow:
+
+```ruby
+rails g activeadmin_addons:install --theme material
+```
+
+Also, you can modify primary color, and all other theme colors, in the first lines of the file: ` app/assets/stylesheets/active_admin.scss`
+```scss
+$am-theme-primary: YOUR-COLOR;
+...
+other colors
+...
+@import 'activeadmin_addons/material';
+```
+
+Take care of defining these variables before the import of `@import 'activeadmin_addons/material';`.
+
+For material documentation you should go to [gem documentation](http://code.viget.com/active_material/docs/api/).
 
 ## Contributing
 
@@ -191,6 +254,8 @@ f.input :updated_at, as: :date_time_picker
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+If you want to collaborate, please check [the rules](docs/CONTRIBUTING.md) first.
 
 ## Credits
 

@@ -3,25 +3,18 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'capybara/rspec'
 require 'capybara/rails'
+require 'selenium-webdriver'
 require 'shoulda-matchers'
 require 'enumerize'
 require 'paperclip'
-require 'capybara/poltergeist'
 require 'database_cleaner'
-
-# Uncomment to work with poltergeist instead of firefox
-# Capybara.javascript_driver = :poltergeist
-
-# ActiveAdmin.application.load_paths = [File.expand_path("../dummy/app/admin", __FILE__)]
+require 'pry'
 
 ENGINE_RAILS_ROOT = File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each { |f| require f }
-
-# Setup Some Admin stuff for us to play with
-include ActiveAdminHelpers
 
 Paperclip.options[:log] = false
 
@@ -30,7 +23,6 @@ RSpec.configure do |config|
   config.filter_run focus: true
   config.filter_run_excluding skip: true
   config.run_all_when_everything_filtered = true
-
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
@@ -45,4 +37,22 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
+  end
+
+  Capybara.register_driver :headless_chrome do |app|
+    capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+      chromeOptions: { args: %w(headless) }
+    )
+    Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: capabilities)
+  end
+
+  # change to :chrome if you want to see the browser running.
+  Capybara.javascript_driver = :headless_chrome
+
+  config.include ActiveAdminHelpers
+  config.include DataLoaders
+  config.include CapybaraHelpers
 end
